@@ -1,0 +1,214 @@
+@import './variables';
+@import "toastr";
+
+
+body{
+    font-family: 'lato','sans-sarif';
+    -webkit-font-smoothing:antialiased;
+    color:dark;
+}
+nav .logo{
+    height: 5rem;
+    width: 5rem;
+}
+nav li:last-child a{
+    background: $primary;
+    &:hover{
+        background: $primary-hover;
+    }
+}
+nav li a{
+    &:hover{
+        color: $primary-hover;
+        transition: $smooth;
+    }
+}
+
+// hero-section-styling
+section.hero{
+    // border: 2px solid black;
+    background: $secondary;
+}
+.btn-primary{
+    background: $primary;
+    transition: $smooth;
+    &:hover{
+        background: $primary-hover;
+    }
+}
+//menu-section-styling
+section span.size{
+    background: $secondary;
+}
+.add-to-cart{
+    background: $pure;
+    color: $primary;
+    border:2px solid $primary;
+    &:hover{
+       background: $primary; 
+       color: $pure;
+       transition: $smooth;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+//empty-cart-styling
+section.cart{
+    background: $secondary;
+    .amount{
+        color: $primary;
+    }
+}
+//login-stylling
+section.login{
+    background: $secondary;
+    min-height: 100vh;
+    .container{
+        background: $pure;
+    }
+    a{
+        color:$primary;
+        &:hover{
+            color:$primary-hover;
+        }
+    }
+}
+
+//warning alert styling
+.warningAlert{
+    margin-bottom: 1rem;
+}
+table a.link{
+    color: $primary;
+    &:hover{
+        color: $primary-hover;
+    }
+}
+section.status{
+    background: $secondary;
+    min-height: calc(100vh - 110px);
+}
+
+.status-box ul{
+    margin-left: 84px;
+}
+.status-box ul li span{
+    position: relative;
+    padding-left: 20px;
+}
+
+//dots
+.status-box ul li span:after{
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    background: $dark;
+    height:10px;
+    width: 10px;
+    border-radius: 50%;
+    transform: translateY(-5px);
+    box-shadow: 0 0 1px 10px $secondary;
+}
+
+// icons
+.status-box ul li span:before{
+    position: absolute;
+    font-family: 'Line Awesome Free';
+    font-size: 46px;
+    font-weight: 600;
+    left:-90px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit;
+}
+.status-box ul li:nth-child(1) span::before{
+    content:'\f46c' ;
+}
+.status-box ul li:nth-child(2) span::before{
+    content:'\f560' ;
+}
+.status-box ul li:nth-child(3) span::before{
+    content:'\f2e7' ;
+}
+.status-box ul li:nth-child(4) span::before{
+    content:'\f4df' ;
+}
+.status-box ul li:nth-child(5) span::before{
+    content:'\f59a' ;
+}
+
+.status-box ul li{
+    position: relative;
+}
+// lines
+.status-box ul li::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left:-6px;
+    width: 2px;
+    height: 100%;
+    background: $dark;
+    margin-top: 1.8rem
+}
+
+//last-line
+.status-box ul li:nth-child(5) span::after{
+    box-shadow: 0 20px 1px 20px $secondary;
+}
+
+// styling after step-completion
+
+//line
+.status-box ul li.step-completed::before{
+    background: $gray;
+}
+//dots
+.status-box ul li.step-completed span::after{
+    background: $gray;
+}
+
+//text
+.status-box ul li.step-completed span{
+    color: $gray;
+}
+
+//styling for current status
+//text
+.status-box ul li.current span{
+    color: $primary;
+}
+//dots
+.status-box ul li.current span::after{
+    background: $primary;
+}
+.status-box ul li small{
+    float: right;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+@media(max-width:1060px){
+    .container{
+        max-width: 95%;
+    }
+    table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+@media(max-width:768px){
+
+    .status-box ul li span:before{
+        font-size: 34px;
+    }
+}
+@media(max-width:812px){
+    nav .logo{
+        height: 3rem;
+        width: 3rem;
+    }
+}

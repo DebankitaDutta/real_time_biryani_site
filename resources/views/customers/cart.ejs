@@ -1,0 +1,59 @@
+<section class='cart py-12'>
+    <%-include('../partials/messages')%>
+
+    <%if(!session.cart){%>
+    <div class="empty-cart py-10">
+        <div class="container mx-auto text-center">
+            <h2 class='text-3xl font-bold'>Cart Empty 🙁</h2>
+            <p class='text-gray-500 text-lg mb-10 mt-4'>Your probably haven't ordered a biryani yet.<br>
+                To order a biryani,go to the main page</p>
+            <img class='w-2/5 mx-auto'src="img/empty-cart.png" alt="empty-cart" >
+            <a href="/" class='inline-block px-5 py-1 btn-primary text-white font-bold rounded-full mt-10'>Go back</a>
+        </div>
+    </div>
+    <%}else{%>
+
+        <div class="order container mx-auto md:px-5 lg:w-1/2">
+            <div class="flex  items-center border-b border-gray-300 py-4">
+                <img class='px-4'src="img/cart-black.png" alt="cart-black">
+                <h2 class='text-xl font-bold'>Order summary</h2>
+            </div>
+            <div class="biryani-list">
+                <%for(let biryani_item of Object.values(session.cart.items)){%>
+
+                <div class="flex items-center my-6 ">
+                    <img class='h-20 lg:h-40 w-20 lg:w-40 mt-4 rounded-full'src="/img/<%=biryani_item.item.image%>" alt="biryani-item">
+                    <div class='ml-6 flex-1'>
+                        <h2 class="font-bold text-xl py-4 pr-2 "><%=biryani_item.item.name%></h2>
+                        <span class="lowercase text-gray-500 text-lg"><%=biryani_item.item.plate%></span>
+                    </div>
+                    <span class="flex-1 ml-3 mr-2 lg:ml-3 pb-6"><%=biryani_item.qty%></span>
+                    <span class="text-lg mb-3 font-bold">₹<%=biryani_item.item.price * biryani_item.qty%></span>
+                </div>
+                <%}%>
+            </div>
+            <hr>
+                <div class="text-right py-3">
+                    <div>
+                        <span class="font-bold text-lg">Total amount:</h1>
+                        <span class="amount font-bold text-lg pl-3 ">₹<%=session.cart.totalAmount%></span>
+                    </div>
+
+                    <%if(user){%>
+                        <div>
+                            <form action="/orders" method='post'class='mt-8 mb-6'>
+                                <input class='w-1/2 p-1 border border-gray-400 mb-6' type="number" name="phonenumber" id="" placeholder='phone number'>
+                                <input class='w-1/2 p-1 border border-gray-400' type="text" name="address" id="" placeholder='Address'>
+                                <div>
+                                    <button class='inline-block mt-6 py-2 px-6 font-bold text-white btn-primary rounded-full'type="submit">Order Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    <%} else{%>
+
+                    <a class='inline-block cursor-pointer py-2 px-6 font-bold text-white btn-primary rounded-full mt-3' href="/login">login to continue</a>
+                    <%}%>
+                </div>
+            </div>
+    <%}%>
+</section>
