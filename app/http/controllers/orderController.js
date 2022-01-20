@@ -40,11 +40,12 @@ function orderControllers(){
             
         },
         async index(req,res){
-            const orders=await Order.find({cutomerId: req.user._id},null,{ 
+            const orders=await Order.find({customerId: req.user._id},null,{ 
                 sort:{
                     'createdAt':-1
                 }
             });
+            console.log('orders=',orders);
             
             res.header('Cache-Control', 'no-store,no-cache')
 
